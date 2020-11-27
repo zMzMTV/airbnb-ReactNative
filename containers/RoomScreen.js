@@ -141,23 +141,19 @@ export default function RoomScreen({ route }) {
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: 48.856614,
-          longitude: 2.3522219,
+          latitude: data.location[1],
+          longitude: data.location[0],
           latitudeDelta: 0.1,
           longitudeDelta: 0.1,
         }}
         showsUserLocation={true}
       >
-        {data.location.map((item, index) => {
-          return (
-            <MapView.Marker
-              coordinate={{
-                latitude: item.latitude,
-                longitude: item.longitude,
-              }}
-            />
-          );
-        })}
+        <MapView.Marker
+          coordinate={{
+            latitude: data.location[1],
+            longitude: data.location[0],
+          }}
+        />
       </MapView>
     </View>
   );
@@ -221,5 +217,9 @@ const styles = StyleSheet.create({
   desc: {
     marginLeft: 25,
     marginRight: 25,
+  },
+  map: {
+    width: 500,
+    height: 500,
   },
 });
